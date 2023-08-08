@@ -4,7 +4,7 @@ import { launchCameraAsync } from 'expo-image-picker';
 import { Colors } from '../../constants/colors';
 import OutlineButton from '../UI/OutlineButton';
 
-function ImagePicker() {
+function ImagePicker({ onTakeImage }) {
   const [pickedImage, setPickedImage] = useState('');
   async function takeImageHandler() {
     const image = await launchCameraAsync({
@@ -14,6 +14,7 @@ function ImagePicker() {
     });
 
     setPickedImage(image.assets[0].uri);
+    onTakeImage(image.assets[0].uri);
   }
 
   let imagePreview = <Text>No Image Taken Yet</Text>;
