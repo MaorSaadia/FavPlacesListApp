@@ -16,8 +16,8 @@ function PlaceForm({ onCreatePlace }) {
     setEnteredTitle(enteredText);
   }
 
-  function takeImageHandler(imageUrl) {
-    setSelectedImage(imageUrl);
+  function takeImageHandler(imageUri) {
+    setSelectedImage(imageUri);
   }
 
   const pickLocationHandler = useCallback((location) => {
