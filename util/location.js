@@ -7,3 +7,16 @@ export function getMapPreview(lat, lng) {
   //&signature=YOUR_SIGNATURE
   return imagePreviewUrl;
 }
+
+export async function getAddress(lat, lng) {
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_API_KEY}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('Failed To Fetch Address');
+  }
+
+  const data = await response.json();
+  const address = data.results[0].formatted_address;
+  return address;
+}
